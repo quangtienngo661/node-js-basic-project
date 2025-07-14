@@ -1,7 +1,9 @@
 const express = require("express");
 const logger = require("./middlewares/logger.middleware");
 const connectDB = require("./config/db");
-const students = require('./routes/student.routes')
+const students = require('./routes/student.routes');
+const auth = require("./middlewares/auth.middleware");
+
 
 const app = express();
 connectDB();
@@ -9,7 +11,8 @@ connectDB();
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
 app.use(logger)
-app.use('/api/students', students)
+app.use('/api/students', auth)
+app.use('/api/students', students);
 
 // app.get('/', (req, res) => {
 //     res.end("Home page")
