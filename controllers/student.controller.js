@@ -56,13 +56,13 @@ const createStudent = async (req, res) => {
     try {
         const studentData = { ...req.body }
         // console.log(student)
-        const createdStudent = await Student.create(studentData);
+        // const createdStudent = await Student.create(studentData);
         // return res.end(`Student with id ${Number(req.params.id)}`)
 
         // const student = new Student({ ...req.body })
         // student.save();
 
-        return res.status(201).json({ msg: "Student's created successfully!", student: createdStudent })
+        return res.status(201).json({ msg: "Student's created successfully!", student: studentData })
     } catch (error) {
          return res.status(500).json({
             msg: "Error creating student",
